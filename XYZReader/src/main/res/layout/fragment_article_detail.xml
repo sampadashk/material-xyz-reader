@@ -118,9 +118,10 @@
         android:id="@+id/share_fab"
         app:pressedTranslationZ="@dimen/fab_press_translation_z"
         app:fabSize="normal"
+        android:layout_margin="16dp"
 
         android:src="@drawable/ic_share"
-        app:layout_anchor="@id/llout"
+        app:layout_anchor="@id/article_body"
         app:layout_anchorGravity="bottom|end"
         android:contentDescription="@string/action_share"
 
