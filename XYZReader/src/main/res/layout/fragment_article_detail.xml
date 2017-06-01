@@ -102,6 +102,9 @@
                     android:paddingBottom="@dimen/detail_body_bottom_margin"
                     android:textColor="@android:color/black"
                     android:textColorLink="@color/theme_accent"
+                    android:autoLink="web"
+                    android:linksClickable="true"
+
 
                      />
 

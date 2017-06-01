@@ -23,7 +23,7 @@ public class RemoteEndpointUtil {
         String itemsJson = null;
         try {
             itemsJson = fetchPlainText(Config.BASE_URL);
-            Log.d("ckres",itemsJson);
+
         } catch (IOException e) {
             Log.e(TAG, "Error fetching items JSON", e);
             return null;
