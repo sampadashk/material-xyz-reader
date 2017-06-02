@@ -63,10 +63,10 @@ public class ArticleDetailFragment extends Fragment implements
   //  @BindView(R.id.share_fab)
     FloatingActionButton mShareFab;
     @Nullable
-    @BindView(R.id.toolbar)
+   // @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @Nullable
-    @BindView(R.id.collaptool_layout)
+   // @BindView(R.id.collaptool_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Nullable
     @BindView(R.id.app_bar)
@@ -128,6 +128,8 @@ public class ArticleDetailFragment extends Fragment implements
         mShareFab= (FloatingActionButton) view.findViewById(R.id.share_fab);
         mPhotoView= (ImageView) view.findViewById(R.id.photo);
         metaBar= (LinearLayout) view.findViewById(R.id.meta_bar);
+        mCollapsingToolbarLayout=(CollapsingToolbarLayout) view.findViewById(R.id.collaptool_layout);
+
 
 
 
@@ -137,7 +139,7 @@ public class ArticleDetailFragment extends Fragment implements
         return view;
     }
     private void changeUIColors(Bitmap bitmap) {
-        Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
+        new Palette.Builder(bitmap).generate(new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
                 int defaultColor = 0xFF333333;
                 int darkMutedColor = palette.getDarkMutedColor(defaultColor);
@@ -148,6 +150,20 @@ public class ArticleDetailFragment extends Fragment implements
                 }
             }
         });
+
+
+      /*  Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
+            public void onGenerated(Palette palette) {
+                int defaultColor = 0xFF333333;
+                int darkMutedColor = palette.getDarkMutedColor(defaultColor);
+                metaBar.setBackgroundColor(darkMutedColor);
+                if (mCollapsingToolbarLayout != null) {
+                    mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
+                    mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
+                }
+            }
+        });
+        */
     }
 
 
@@ -166,72 +182,6 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
 
-  /*  private void bindViews() {
-        if (mRootView == null) {
-            return;
-        }
-
-        TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
-        TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
-        bylineView.setMovementMethod(new LinkMovementMethod());
-        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-
-
-        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
-
-        if (mCursor != null) {
-            mRootView.setAlpha(0);
-            mRootView.setVisibility(View.VISIBLE);
-            mRootView.animate().alpha(1);
-            titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-            Date publishedDate = parsePublishedDate();
-            if (!publishedDate.before(START_OF_EPOCH.getTime())) {
-                bylineView.setText(Html.fromHtml(
-                        DateUtils.getRelativeTimeSpanString(
-                                publishedDate.getTime(),
-                                System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
-                                DateUtils.FORMAT_ABBREV_ALL).toString()
-                                + " by <font color='#ffffff'>"
-                                + mCursor.getString(ArticleLoader.Query.AUTHOR)
-                                + "</font>"));
-
-            } else {
-                // If date is before 1902, just show the string
-                bylineView.setText(Html.fromHtml(
-                        outputFormat.format(publishedDate) + " by <font color='#ffffff'>"
-                                + mCursor.getString(ArticleLoader.Query.AUTHOR)
-                                + "</font>"));
-
-            }
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
-            ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
-                    .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
-                        @Override
-                        public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
-                            Bitmap bitmap = imageContainer.getBitmap();
-                            if (bitmap != null) {
-                                Palette p = Palette.generate(bitmap, 12);
-                                mMutedColor = p.getDarkMutedColor(0xFF333333);
-                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                                mRootView.findViewById(R.id.meta_bar)
-                                        .setBackgroundColor(mMutedColor);
-                                updateStatusBar();
-                            }
-                        }
-
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError) {
-
-                        }
-                    });
-        } else {
-            mRootView.setVisibility(View.GONE);
-            titleView.setText("N/A");
-            bylineView.setText("N/A" );
-            bodyView.setText("N/A");
-        }
-    }
-    */
 
 
     @Override

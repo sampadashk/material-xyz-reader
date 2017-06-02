@@ -9,12 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/material_layout_app_bar_height"
         android:fitsSystemWindows="true"
+        app:elevation="@dimen/app_bar_elevation"
         android:id="@+id/app_bar"
+
+
         >
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/collaptool_layout"
+            app:contentScrim="?attr/colorPrimary"
+
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleMargin="@dimen/activity_horizontal_margin"
             app:expandedTitleMarginBottom="@dimen/expanded_toolbar_title_margin_bottom"
@@ -74,6 +79,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+
                 app:layout_collapseMode="pin" />
 
 
@@ -119,9 +126,10 @@
         app:pressedTranslationZ="@dimen/fab_press_translation_z"
         app:fabSize="normal"
         android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
 
         android:src="@drawable/ic_share"
-        app:layout_anchor="@id/article_body"
+        app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         android:contentDescription="@string/action_share"
 
