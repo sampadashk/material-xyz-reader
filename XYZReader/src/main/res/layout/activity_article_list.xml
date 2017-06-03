@@ -39,10 +39,6 @@
 
 
     </android.support.design.widget.AppBarLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
 
@@ -53,6 +49,7 @@ android:id="@+id/swipe_refresh_layout"
     android:layout_gravity="center_horizontal"
 
 
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
     android:layout_width="match_parent"
 android:layout_height="match_parent">
@@ -70,7 +67,7 @@ android:layout_height="match_parent">
 
          />
 </android.support.v4.widget.SwipeRefreshLayout>
-    </FrameLayout>
+
 
 
 </android.support.design.widget.CoordinatorLayout>
