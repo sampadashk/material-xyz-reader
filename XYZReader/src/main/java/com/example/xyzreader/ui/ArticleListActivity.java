@@ -186,9 +186,11 @@ public class ArticleListActivity extends AppCompatActivity implements
             holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
 
 
+
+
            holder.thumbnailView.setImageUrl(
-                    mCursor.getString(ArticleLoader.Query.THUMB_URL),
-                    ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
+                  mCursor.getString(ArticleLoader.Query.THUMB_URL),
+                   ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
 
 
             holder.thumbnailView.setScaleType(ImageView.ScaleType.CENTER_CROP);
